@@ -24,7 +24,6 @@ void readFile1()
 	maxkolom1 = 0;
 	int maxstring = 0;
 	char read[1000];
-	//char memostring;
 	
 	FILE *read1 = fopen("file1.txt", "r");
 	if(read1 != NULL)
@@ -34,14 +33,12 @@ void readFile1()
 			fscanf(read1, "%[^\n]\n", read);
 			jumlahline1++;
 			
-			//printf("%s\n",read);
-			//getchar();
+			//hitung total string
 			maxstring += strlen(read);
+			
 			//cek jumlah kolom di file
 			maxkolom1 = std::max(maxstring,maxkolom1);
 		}
-		
-		
 	}
 	else
 	{
@@ -49,14 +46,15 @@ void readFile1()
 	}
 	
 	fclose(read1);
-	//if(jumlahline!=0){
+	
 	//char array dinamis nampung data file(line+kolom)
 	data1 = new char *[jumlahline1];
+	
 	for(int i = 0;i < jumlahline1;i++)
 	{
 		data1[i] = new char[maxkolom1];
 	}
-	//}
+	
 	int idx = 0;
 	FILE *baca = fopen("file1.txt", "r");
 	if(baca != NULL)
@@ -101,6 +99,7 @@ void readFile2()
 	}
 	
 	fclose(read2);
+
 	//char array dinamis,nampung data file(line+kolom)
 	data2 = new char *[jumlahline2];
 	for(int i = 0;i < jumlahline2;i++)
@@ -147,16 +146,6 @@ void lcs(char *kata1, char *kata2)
 			else
 			{
 				matrix[i][j] = std::max(matrix[i-1][j], matrix[i][j-1]);
-				/*if(matrix[i-1][j] > matrix[i][j-1])
-				{
-					matrix[i][j] = matrix[i-1][j];
-				}
-				else if(matrix[i-1][j] < matrix[i][j-1])
-				{
-					matrix[i][j] = matrix[i][j-1];
-				}
-				else
-					matrix[i][j] = matrix[i][j-1] = matrix[i-1][j];*/
 			}
 		}
 	}
